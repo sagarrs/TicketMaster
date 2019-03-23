@@ -1,3 +1,5 @@
+
+/* App.js */
 var React = require('react');
 var Component = React.Component;
 var CanvasJSReact = require('./canvasjs.react');
@@ -6,22 +8,27 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 class App extends Component {
 	render() {
 		const options = {
+			exportEnabled: true,
+			animationEnabled: true,
 			title: {
-				text: "Basic Column Chart"
+				text: "Website Traffic Sources"
 			},
-			data: [
-			{
-				// Change type to "doughnut", "line", "splineArea", etc.
-				type: "column",
+			data: [{
+				type: "pie",
+				startAngle: 75,
+				toolTipContent: "<b>{label}</b>: {y}%",
+				showInLegend: "true",
+				legendText: "{label}",
+				indexLabelFontSize: 16,
+				indexLabel: "{label} - {y}%",
 				dataPoints: [
-					{ label: "Apple",  y: 10  },
-					{ label: "Orange", y: 15  },
-					{ label: "Banana", y: 25  },
-					{ label: "Mango",  y: 30  },
-					{ label: "Grape",  y: 28  }
+					{ y: 18, label: "Direct" },
+					{ y: 49, label: "Organic Search" },
+					{ y: 9, label: "Paid Search" },
+					{ y: 5, label: "Referral" },
+					{ y: 19, label: "Social" }
 				]
-			}
-			]
+			}]
 		}
 		return (
 		<div>

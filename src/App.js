@@ -120,15 +120,7 @@ class App extends Component {
       )
     })
 
-    console.log("lengthsssssssssssssssss")
-    console.log(salesLength.length)
-    console.log(technicalLength.length)
-    console.log(marketingLength.length)
-
     const options = {
-			title: {
-				text: "Basic Column Chart"
-			},
 			data: [
 			{
 				// Change type to "doughnut", "line", "splineArea", etc.
@@ -142,6 +134,25 @@ class App extends Component {
 			]
     }
     
+		const options1 = {
+			exportEnabled: true,
+			animationEnabled: true,
+			data: [{
+				type: "pie",
+				startAngle: 75,
+				toolTipContent: "<b>{label}</b>: {y}%",
+				showInLegend: "true",
+				legendText: "{label}",
+				indexLabelFontSize: 16,
+				indexLabel: "{label} - {y}%",
+				dataPoints: [          
+          {y: salesLength.length, label: "Sales" },
+					{y: technicalLength.length, label: "Technical" },
+					{y: marketingLength.length, label: "Marketing" }
+				]
+			}]
+		}
+
     return (
       <div>
           <h2>Ticket Master</h2>
@@ -227,9 +238,10 @@ class App extends Component {
             </form>  
           </div>
 
-          <div className="Charts">
+          <div style={{ height: 50, width: 300 }}>
             <h2>Charts</h2>
             <CanvasJSChart options = {options}/>
+            <CanvasJSChart options = {options1}/>
           </div>  
       </div>
     );

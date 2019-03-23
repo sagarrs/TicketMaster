@@ -101,6 +101,15 @@ class App extends Component {
     }))
   }
 
+  handleSearch = (e) => {
+    const search = e.target.value
+    this.setState(() => ({
+      tickets: this.state.tickets.filter((ticket) => {
+        return( ticket.name.includes(search))
+        })
+    }))
+  }
+
   render() {
     var salesLength = this.state.tickets.filter( (depart) => {
       return(
@@ -120,15 +129,7 @@ class App extends Component {
       )
     })
 
-    console.log("lengthsssssssssssssssss")
-    console.log(salesLength.length)
-    console.log(technicalLength.length)
-    console.log(marketingLength.length)
-
     const options = {
-			title: {
-				text: "Basic Column Chart"
-			},
 			data: [
 			{
 				// Change type to "doughnut", "line", "splineArea", etc.
@@ -142,14 +143,33 @@ class App extends Component {
 			]
     }
     
+		const options1 = {
+			exportEnabled: true,
+			animationEnabled: true,
+			data: [{
+				type: "pie",
+				startAngle: 75,
+				toolTipContent: "<b>{label}</b>: {y}%",
+				showInLegend: "true",
+				legendText: "{label}",
+				indexLabelFontSize: 16,
+				indexLabel: "{label} - {y}%",
+				dataPoints: [          
+          {y: salesLength.length, label: "Sales" },
+					{y: technicalLength.length, label: "Technical" },
+					{y: marketingLength.length, label: "Marketing" }
+				]
+			}]
+		}
+
     return (
       <div>
           <h2>Ticket Master</h2>
 
           <h3>Listing Tickets = {this.state.tickets.length} </h3>
 
+          <input type="search" onChange={this.handleSearch}/><br/> <br/>
           <h3>here comes the tabs </h3>
-          <input type="search"/><br/> <br/>
           <input type="button" value="All" onClick={this.handleAll}/>
           <input type="button" value="Low" onClick={this.handleLow}/>
           <input type="button" value="Medium" onClick={this.handleMedium}/>
@@ -227,9 +247,10 @@ class App extends Component {
             </form>  
           </div>
 
-          <div className="Charts">
+          <div style={{ height: 50, width: 300 }}>
             <h2>Charts</h2>
             <CanvasJSChart options = {options}/>
+            <CanvasJSChart options = {options1}/>
           </div>  
       </div>
     );

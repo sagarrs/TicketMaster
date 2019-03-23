@@ -101,6 +101,15 @@ class App extends Component {
     }))
   }
 
+  handleSearch = (e) => {
+    const search = e.target.value
+    this.setState(() => ({
+      tickets: this.state.tickets.filter((ticket) => {
+        return( ticket.name.includes(search))
+        })
+    }))
+  }
+
   render() {
     var salesLength = this.state.tickets.filter( (depart) => {
       return(
@@ -159,8 +168,8 @@ class App extends Component {
 
           <h3>Listing Tickets = {this.state.tickets.length} </h3>
 
+          <input type="search" onChange={this.handleSearch}/><br/> <br/>
           <h3>here comes the tabs </h3>
-          <input type="search"/><br/> <br/>
           <input type="button" value="All" onClick={this.handleAll}/>
           <input type="button" value="Low" onClick={this.handleLow}/>
           <input type="button" value="Medium" onClick={this.handleMedium}/>

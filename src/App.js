@@ -183,7 +183,7 @@ class App extends Component {
             
 
           <div>
-            <table border="1">
+            <table>
                 <thead>
                     <tr>
                       <th>Code</th>
@@ -214,8 +214,8 @@ class App extends Component {
             </table><br/>
           </div>  
 
-          <div>
-            <Progress value={this.state.tickets.length} /><br/>
+          <div class="progress">
+            <Progress value={this.state.tickets.length}/><br/>
           </div>
           
           <div>

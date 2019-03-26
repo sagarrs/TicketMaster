@@ -165,45 +165,54 @@ class App extends Component {
     return (
       <div>
           <h2>Ticket Master</h2>
+          
+          <div class="col-md-3 col-centered">
+            <input type="search" onChange={this.handleSearch}/><br/> <br/>
+          </div>
 
-          <h3>Listing Tickets = {this.state.tickets.length} </h3>
+          <div class="float-left">
+            <h3>Listing Tickets = {this.state.tickets.length} </h3>
+          </div>
 
-          <input type="search" onChange={this.handleSearch}/><br/> <br/>
-          <h3>here comes the tabs </h3>
-          <input type="button" value="All" onClick={this.handleAll}/>
-          <input type="button" value="Low" onClick={this.handleLow}/>
-          <input type="button" value="Medium" onClick={this.handleMedium}/>
-          <input type="button" value="High" onClick={this.handleHigh}/> <br/><br/>
+          <div class="col-md-3 col-centered"> 
+            <input type="button" value="All" onClick={this.handleAll}/>
+            <input type="button" value="Low" onClick={this.handleLow}/>
+            <input type="button" value="Medium" onClick={this.handleMedium}/>
+            <input type="button" value="High" onClick={this.handleHigh}/> <br/><br/>
+          </div> 
+            
 
-          <table border="1">
-              <thead>
-                  <tr>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Priority</th>
-                    <th>Message</th>
-                    <th>Status</th>
-                  </tr>
-              </thead>
+          <div>
+            <table border="1">
+                <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Name</th>
+                      <th>Department</th>
+                      <th>Priority</th>
+                      <th>Message</th>
+                      <th>Status</th>
+                    </tr>
+                </thead>
 
-              <tbody>
-                  {
-                    this.state.tickets.map((tick) => {
-                      return (
-                        <tr key={tick.ticket_code}>
-                          <td>{tick.ticket_code}</td>
-                          <td>{tick.name}</td>
-                          <td>{tick.department}</td>
-                          <td>{tick.priority}</td>
-                          <td>{tick.message}</td>
-                          <td>{tick.status}</td>
-                        </tr>  
-                      )
-                    }) 
-                  } 
-              </tbody>
-          </table><br/>
+                <tbody>
+                    {
+                      this.state.tickets.map((tick) => {
+                        return (
+                          <tr key={tick.ticket_code}>
+                            <td>{tick.ticket_code}</td>
+                            <td>{tick.name}</td>
+                            <td>{tick.department}</td>
+                            <td>{tick.priority}</td>
+                            <td>{tick.message}</td>
+                            <td>{tick.status}</td>
+                          </tr>  
+                        )
+                      }) 
+                    } 
+                </tbody>
+            </table><br/>
+          </div>  
 
           <div>
             <Progress value={this.state.tickets.length} /><br/>

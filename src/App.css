@@ -23,6 +23,16 @@
   color: #61dafb;
 }
 
+/* T.H.E C.S.S O.F A.P.P S.T.A.R.T.S F.R.O.M H.E.R.E */
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.float-left{
+  float: left;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -33,6 +33,19 @@
   float: left;
 }
 
+table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+
+.progress {
+  width: 50%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
